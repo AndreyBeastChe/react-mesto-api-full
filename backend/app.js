@@ -43,18 +43,6 @@ const validateLogin = celebrate({
   }),
 });
 
-app.post('/signin', validateLogin, login);
-app.post('/signup', validate, createUser);
-
-app.use('/users', auth, usersRouter);
-app.use('/cards', auth, cardsRouter);
-
-app.use('*', (req, res, next) => {
-  next(new NotFoundError('Несуществующий адрес'));
-});
-
-app.use(errorLogger);
-app.use(errors());
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
   'https://vse-na-meste.nomoredomains.xyz',
@@ -91,6 +79,20 @@ if (method === 'OPTIONS') {
     // завершаем обработку запроса и возвращаем результат клиенту
     return res.end();
 }
+
+
+app.post('/signin', validateLogin, login);
+app.post('/signup', validate, createUser);
+
+app.use('/users', auth, usersRouter);
+app.use('/cards', auth, cardsRouter);
+
+app.use('*', (req, res, next) => {
+  next(new NotFoundError('Несуществующий адрес'));
+});
+
+app.use(errorLogger);
+app.use(errors());
 
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {

@@ -2,7 +2,6 @@ class Api {
   constructor(options) {
     this._url = options.url;
     this._headers = options.headers;
-    this._groupId = "cohort-33";
   }
 
   checkResponse(res) {
@@ -10,13 +9,13 @@ class Api {
   }
 
   getUser() {
-    return fetch(`${this._url}/${this._groupId}/users/me`, {
+    return fetch(`${this._url}/users/me`, {
       headers: this._headers,
     }).then(this.checkResponse);
   }
 
   setUser({ name, about }) {
-    return fetch(`${this._url}/${this._groupId}/users/me`, {
+    return fetch(`${this._url}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({ name, about }),
@@ -24,13 +23,13 @@ class Api {
   }
 
   gerCards() {
-    return fetch(`${this._url}/${this._groupId}/cards`, {
+    return fetch(`${this._url}/cards`, {
       headers: this._headers,
     }).then(this.checkResponse);
   }
 
   addCard({ name, link }) {
-    return fetch(`${this._url}/${this._groupId}/cards`, {
+    return fetch(`${this._url}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({ name, link }),
@@ -38,7 +37,7 @@ class Api {
   }
 
   changeAvatar(avatar) {
-    return fetch(`${this._url}/${this._groupId}/users/me/avatar`, {
+    return fetch(`${this._url}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({ avatar }),
@@ -46,14 +45,14 @@ class Api {
   }
 
   likeCard(cardId, isLiked) {
-    return fetch(`${this._url}/v1/${this._groupId}/cards/${cardId}/likes`, {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: isLiked ? "PUT" : "DELETE",
       headers: this._headers,
     }).then(this.checkResponse);
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._url}/v1/${this._groupId}/cards/${cardId}`, {
+    return fetch(`${this._url}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
     }).then(this.checkResponse);
@@ -61,7 +60,7 @@ class Api {
 }
 
 const api = new Api({
-  url: "http://vse-na-meste.nomoredomains.xyz/",
+  url: "http://vse-na-meste.nomoredomains.xyz",
   headers: {
     //authorization: "3671189f-65d1-4347-8209-095bdf48fd3f",
     "Content-Type": "application/json",

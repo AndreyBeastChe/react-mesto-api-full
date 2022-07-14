@@ -33,7 +33,7 @@ class Auth {
 }
 
 const auth = new Auth({
-  url: "https://auth.nomoreparties.co",
+  url: "http://vse-na-meste.nomoredomains.xyz",
   headers: {
     "Content-Type": "application/json",
   },

@@ -27,6 +27,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
 });
 
+app.use(cors);
 
 
 const validate = celebrate({
@@ -83,7 +84,7 @@ const validateLogin = celebrate({
 //     return res.end();
 // }
 
-app.use(cors);
+
 
 app.post('/signin', validateLogin, login);
 app.post('/signup', validate, createUser);

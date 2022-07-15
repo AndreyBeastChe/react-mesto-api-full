@@ -6,6 +6,7 @@ const allowedCors = [
   'localhost:3000',
   'https://localhost:3000',
   'vse-na-meste.nomoredomains.xyz',
+  'https://api.vse-na-meste.nomoredomains.xyz/signup'
 ];
 
 module.exports = ((req, res, next) => {

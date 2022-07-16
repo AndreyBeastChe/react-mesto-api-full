@@ -8,7 +8,7 @@ const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
 const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const cors = require('./middlewares/cors');
+const cors  = require('./middlewares/cors');
 
 const { reg } = require('./constants');
 // Слушаем 3000 порт
@@ -104,7 +104,7 @@ app.use((err, req, res, next) => {
   if (err.statusCode) {
     return res.status(err.statusCode).send({ message: err.message });
   }
-  return res.status(500).send({ message: 'Что-то пошло не так' });
+  return res.status(500).send({ message: 'Что-то пошло не так' + err });
 });
 
 app.listen(PORT, () => {

@@ -6,13 +6,13 @@ const allowedCors = [
   'localhost:3000',
   'https://localhost:3000',
   'vse-na-meste.nomoredomains.xyz',
-  'https://api.vse-na-meste.nomoredomains.xyz/signup'
 ];
 
 module.exports = ((req, res, next) => {
     const { origin } = req.headers;
     const { method } = req;
-  
+    console.log('hey hey hey')
+
     const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
     const requestHeaders = req.headers['access-control-request-headers'];
   

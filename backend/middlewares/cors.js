@@ -5,6 +5,7 @@ const allowedCors = [
   'http://api.vse-na-meste.nomoredomains.xyz',
   'localhost:3000',
   'https://localhost:3000',
+  'https://localhost:3001',
   'vse-na-meste.nomoredomains.xyz',
 ];
 

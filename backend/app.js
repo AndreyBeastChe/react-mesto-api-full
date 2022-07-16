@@ -104,8 +104,12 @@ app.use((err, req, res, next) => {
   if (err.statusCode) {
     return res.status(err.statusCode).send({ message: err.message });
   }
-  return res.status(500).send({ message: 'Что-то пошло не так', err: err });
+  return res.status(500).send({ message: err.message  });
 });
 
 app.listen(PORT, () => {
 });
+
+
+
+// message: 'Что-то пошло не так'

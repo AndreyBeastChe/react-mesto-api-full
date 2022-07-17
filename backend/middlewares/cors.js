@@ -3,8 +3,8 @@ const allowedCors = [
   'http://vse-na-meste.nomoredomains.xyz',
   'https://api.vse-na-meste.nomoredomains.xyz',
   'http://api.vse-na-meste.nomoredomains.xyz',
+  'http://localhost:3000/',
   'localhost:3000',
-  'https://localhost:3000',
   'https://localhost:3001',
   'vse-na-meste.nomoredomains.xyz',
 ];

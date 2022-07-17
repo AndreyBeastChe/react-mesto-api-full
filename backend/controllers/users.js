@@ -5,10 +5,12 @@ const NotFoundError = require('../errors/NotFoundError');
 const BadRequestError = require('../errors/BadRequestError');
 const ConflictError = require('../errors/ConflictError');
 const UnauthorizedError = require('../errors/UnauthorizedError');
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 
 const MONGO_DUPLICATE_ERROR_CODE = 11000;
 
-const SECRET_KEY = 'secret';
+const DEV_SECRET_KEY = 'secret';
 
 module.exports.createUser = (req, res, next) => {
   const { name, about, avatar } = req.body;
@@ -130,8 +132,13 @@ module.exports.login = (req, res, next) => {
         next(new UnauthorizedError('Неправильный емейл или пароль'));
         return;
       }
+      const token = jwt.sign(
+        { _id: user._id },
+        NODE_ENV === 'production' ? JWT_SECRET : DEV_SECRET_KEY,
+        { expiresIn: '7d' },
+      );
       res.send({
-        token: jwt.sign({ _id: user._id }, SECRET_KEY, { expiresIn: '7d' }),
+       token
       });
     });
 };

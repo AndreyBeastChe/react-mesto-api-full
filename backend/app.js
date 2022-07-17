@@ -9,6 +9,7 @@ const cardsRouter = require('./routes/cards');
 const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const cors  = require('./middlewares/cors');
+require('dotenv').config();
 
 const { reg } = require('./constants');
 // Слушаем 3000 порт
@@ -44,6 +45,12 @@ const validateLogin = celebrate({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(8),
   }),
+});
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
 });
 
 app.post('/signin', validateLogin, login);

@@ -50,7 +50,7 @@ module.exports.getCurrentUser = (req, res, next) => {
         next(new NotFoundError('Нет пользователя с таким id'));
         return;
       }
-      res.status(200).send({ data: user });
+      res.status(200).send({ user });
     })
     .catch((err) => {
       next(err);

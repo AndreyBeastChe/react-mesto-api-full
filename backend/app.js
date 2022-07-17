@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -9,7 +11,6 @@ const cardsRouter = require('./routes/cards');
 const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const cors  = require('./middlewares/cors');
-require('dotenv').config();
 
 const { reg } = require('./constants');
 // Слушаем 3000 порт

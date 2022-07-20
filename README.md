@@ -6,3 +6,5 @@
 https://vse-na-meste.nomoredomains.xyz
 бек
 https://api.vse-na-meste.nomoredomains.xyz
+ip
+51.250.45.234

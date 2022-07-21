@@ -106,7 +106,7 @@ module.exports.updateAvatar = (req, res, next) => {
     { avatar },
     { new: true, runValidators: true },
   )
-    .then((user) => res.send({ user }))
+    .then((user) => res.send( user ))
     .catch((err) => {
       next(err);
     });
@@ -133,7 +133,7 @@ module.exports.login = (req, res, next) => {
       }
       const token = jwt.sign(
         { _id: user._id },
-        NODE_ENV === 'production' ? JWT_SECRET : DEV_SECRET_KEY,
+       NODE_ENV === 'production' ? JWT_SECRET : DEV_SECRET_KEY,
         { expiresIn: '7d' },
       );
       res.send({
